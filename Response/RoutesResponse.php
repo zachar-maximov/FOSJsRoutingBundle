@@ -64,10 +64,7 @@ class RoutesResponse
             }
 
             $compiledRoute = $route->compile();
-            $defaults      = array_intersect_key(
-                $route->getDefaults(),
-                array_fill_keys($compiledRoute->getVariables(), null)
-            );
+            $defaults      = $route->getDefaults();
 
             if (!isset($defaults['_locale']) && in_array('_locale', $compiledRoute->getVariables())) {
                 $defaults['_locale'] = $this->locale;
